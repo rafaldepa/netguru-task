@@ -10,7 +10,6 @@ const initSmoothScroll = (offset = 30) => {
             history.pushState(null, null, null);
         })
     }
-    return;
 }
 
 // Find article parts & offset from top 
@@ -41,10 +40,10 @@ const findActiveSectionHash = (anchorList) => {
 // Highlight Link in Article Navigation
 const highlightArticleLink = (hash) => {
     let anchors = document.querySelectorAll('.article-navigation__item a');
-    [].forEach.call(anchors, (el) => {
+    for (let el of anchors) {
         el.classList.remove("current");
-    });
-    for(let item of anchors) {       
+    }   
+    for (let item of anchors) {       
         if(item.getAttribute('href') == `#${hash}`) {
             item.classList.add('current');
         }
