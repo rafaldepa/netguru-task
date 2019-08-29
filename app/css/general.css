@@ -388,7 +388,8 @@ body {
   height: 46px;
   border: 1px solid #00D563;
   border-radius: 30px;
-  padding: 0 15px 0; }
+  padding: 0 15px 0;
+  -webkit-appearance: none; }
   .article-navigation__mobile:focus {
     outline: none; }
 
