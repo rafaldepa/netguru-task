@@ -26,8 +26,14 @@ gulp.task('styles', () => {
 
 gulp.task('scripts', () => {
     return gulp.src('app/js/*.js')
-        .pipe(minify())
-        .pipe(uglify())
+        .pipe(minify({
+            ext: {
+                src: '.js',
+                min: '.js'
+            },
+            mangle: false,
+            noSource: true      
+        }))
         .pipe(gulp.dest('dist/js'))        
 });
 

@@ -1,31 +1,16 @@
 // Smooth Scrolling to Element
 const initSmoothScroll = (offset = 30) => {
     let anchors = document.querySelectorAll('a[href^="#"]');
-
     for (let item of anchors) {
         item.addEventListener('click', (e) => {
             e.preventDefault();
             let hash = item.getAttribute('href');
             let target = document.querySelector(hash);
-            console.log(target.offsetTop)
             window.scrollTo(0, target.offsetTop - offset);
             history.pushState(null, null, null);
         })
     }
     return;
-}
-
-// Highlight current active article part
-const toggleArticle = (hash) => {
-    let anchors = document.querySelectorAll('.article-navigation__item a');
-    [].forEach.call(anchors, (el) => {
-        el.classList.remove("current");
-    });
-    for(let item of anchors) {       
-        if(item.getAttribute('href') == `#${hash}`) {
-            item.classList.add('current');
-        }
-    }   
 }
 
 // Find article parts & offset from top 
@@ -41,8 +26,8 @@ const updateArticleSectionsPosition = () => {
     return anchorPoints;
 }
 
-// Find current section hash
-const updateActiveSection = (anchorList) => {
+// Find the current article section hash
+const findActiveSectionHash = (anchorList) => {
     const scrollY = window.scrollY;
     let lastItemHash;
     for (let el in anchorList) {
@@ -50,19 +35,48 @@ const updateActiveSection = (anchorList) => {
             lastItemHash = anchorList[el][0];
         }
     }
-    return toggleArticle(lastItemHash);
+    return highlightArticleLink(lastItemHash);
 }
 
+// Highlight Link in Article Navigation
+const highlightArticleLink = (hash) => {
+    let anchors = document.querySelectorAll('.article-navigation__item a');
+    [].forEach.call(anchors, (el) => {
+        el.classList.remove("current");
+    });
+    for(let item of anchors) {       
+        if(item.getAttribute('href') == `#${hash}`) {
+            item.classList.add('current');
+        }
+    }   
+}
 
 const initEventListeners = () => {
-    // Active Article Section
+    // Active article section
     let articleHooks = updateArticleSectionsPosition();
     window.addEventListener('resize', () => {
         articleHooks = updateArticleSectionsPosition();        
     });
     window.addEventListener('scroll', () => {
-        updateActiveSection(articleHooks)
+        findActiveSectionHash(articleHooks);
     }); 
+
+    // ScrollTo section on Mobile
+    const mobileSelect = document.querySelector('#article-mobile-navigation');
+    mobileSelect.addEventListener('change', () => {
+        let offset = 30;
+        let hash = mobileSelect.value;
+        let target = document.querySelector(hash);
+        window.scrollTo(0, target.offsetTop - offset);
+        history.pushState(null, null, null);
+    });
+
+    // Stretch the page
+    const stretcher = document.querySelector("#more-space");
+    stretcher.addEventListener('click', () => {
+        document.querySelector('body').classList.add('stretched');
+        document.querySelector('.more-space').remove();
+    });
 }
 
 initSmoothScroll();
