@@ -31,6 +31,7 @@ $heroBackground: #FAFAFA;
 * {
     margin: 0;
     padding: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
     box-sizing: border-box;
 }
 
@@ -144,24 +145,36 @@ body {
         color: $text;
         font-size: 1.4rem;
         line-height: 1.7;
-        margin: 0 0 30px 0;
+        margin: 0 0 15px 0;
+        &:last-of-type {
+            margin: 0 0 30px 0;
+        }        
     }
 
 
     @media (min-width: 1300px) {
         &__heading { margin: 0 0 40px 0; line-height: 1.5; }
         &__subheading { margin: 0 0 20px 0; }
-        &__paragraph { margin: 0 0 59px 0; }
+        &__paragraph { 
+            margin: 0 0 20px 0;
+            &:last-of-type {
+                margin: 0 0 59px 0;
+            }
+        }
     }
 }
 
 .counters-wrapper {
-    padding: 70px 0;
+    padding: 50px 0;
     &__content {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-flow: row wrap;
+    }
+
+    @media(min-width: 992px) {
+        padding: 80px 0;
     }
 }
 

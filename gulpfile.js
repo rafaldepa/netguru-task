@@ -27,6 +27,7 @@ gulp.task('styles', () => {
 gulp.task('scripts', () => {
     return gulp.src('app/js/*.js')
         .pipe(minify())
+        .pipe(uglify())
         .pipe(gulp.dest('dist/js'))        
 });
 
@@ -59,5 +60,3 @@ gulp.task('serve', () => {
 
 // Build
 gulp.task('build', gulp.series('clean','styles','scripts','move-files'));
-
-// gulp.task('default', ['serve']);
