@@ -1,0 +1,29 @@
+{
+  "name": "netguru-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "netguru",
+    "task",
+    "recruitment"
+  ],
+  "author": "Rafał Depa",
+  "license": "ISC",
+  "browserslist": [
+    "defaults"
+  ],
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "del": "^5.1.0",
+    "event-stream": "^4.0.1",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-sass": "^4.0.2"
+  }
+}
