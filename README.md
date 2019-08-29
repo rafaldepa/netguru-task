@@ -23,7 +23,7 @@ When the build finishes, your files will be available in the **dist** folder.
 
 ## My decisions
 ### BEM & SCSS
-It's one of the best connections I know! Writing styles for the BEM methodology is much more pleasant and faster.
+It's one of the best connections I know! Writing styles for the BEM methodology is easier to manage as the codebase grows than no-standard.
 ### Gulp.js
 It helps me to automate some processes like SCSS compilation, CSS and Javascript minification, automatic CSS prefixes.
 
