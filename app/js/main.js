@@ -7,7 +7,6 @@ const initSmoothScroll = (offset = 30) => {
             let hash = item.getAttribute('href');
             let target = document.querySelector(hash);
             window.scrollTo(0, target.offsetTop - offset);
-            history.pushState(null, null, null);
         })
     }
 }
