@@ -5,6 +5,7 @@ const sass = require('gulp-sass');
 const prefix = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const minify = require('gulp-minify');
+const babel = require('gulp-babel');
 const browserSync = require('browser-sync').create();
 
 // Tasks
@@ -26,6 +27,9 @@ gulp.task('styles', () => {
 
 gulp.task('scripts', () => {
     return gulp.src('app/js/*.js')
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
         .pipe(minify({
             ext: {
                 src: '.js',
@@ -66,3 +70,6 @@ gulp.task('serve', () => {
 
 // Build
 gulp.task('build', gulp.series('clean','styles','scripts','move-files'));
+
+// Default
+gulp.task('default', gulp.series('serve'));
