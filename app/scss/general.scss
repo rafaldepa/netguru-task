@@ -402,9 +402,16 @@ body {
         width: 100%;
         height: 46px;
         border: 1px solid #00D563;
-        border-radius: 30px;
-        background: #fff;
-        padding: 0 15px 0;
+        border-radius: 30px;        
+        padding: 0 45px 0 25px;
+        background-image: url(../images/arrow-down.svg);
+        background-size: 12px 12px;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: calc(100% - 20px) 50%;
+        -moz-appearance: none; 
+        -webkit-appearance: none; 
+        appearance: none;
 
         &:focus {
             outline: none;
